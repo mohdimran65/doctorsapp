@@ -1,0 +1,9 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="hello.logout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title">
+		<content>
+	<Text text="You are logged out"></Text>
+	<Button text="Click Here to log back in" press="onPress"/>
+		</content>
+	</Page>
+</core:View>

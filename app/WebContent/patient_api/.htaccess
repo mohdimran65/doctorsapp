@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>  
+RewriteEngine on  
+RewriteRule (\.svc*) /patient_api/Index.php  
+</IfModule>  
+php_value include_path ".;C:\xampp\htdocs\patient_api\library" 
+Header set Access-Control-Allow-Origin "*"  
+Header set Access-Control-Allow-Headers "MaxDataServiceVersion, DataServiceVersion"   

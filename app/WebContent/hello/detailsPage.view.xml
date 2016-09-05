@@ -1,0 +1,97 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="hello.detailsPage" xmlns:html="http://www.w3.org/1999/xhtml" 
+		xmlns:layout="sap.ui.layout">
+<Page title="Search a Patient" showNavButton="true" navButtonPress="onProfileNavigation">
+<ObjectHeader
+		responsive="true"
+		fullScreenOptimized="true"
+		icon="{item>/IMAGE}"
+		iconAlt="{item>/PATIENT_NAME}"
+		intro="{item>/USERID}"
+		title="{item>/PATIENT_NAME}"
+		titleActive="true"
+		titlePress="handleTitlePress"
+		showMarkers="true"
+		markFlagged="true"
+		markFavorite="true"
+		numberState="Success"
+		backgroundDesign="Translucent">
+		<attributes>
+			<ObjectAttribute
+				title="UserID"
+				text="{item>/USERID}"/>
+			<ObjectAttribute
+				title="Phone"
+				text="{item>/PHONE}"
+				active="true"/>
+			<ObjectAttribute
+				title="Email"
+				text="{item>/EMAIL}"/>
+			<ObjectAttribute
+				title="Address"
+				text="{item>/STREET}"/>
+			
+		</attributes>
+		<headerContainer>
+			<IconTabBar
+				id="itb1"
+				selectedKey="key3"
+				upperCase="true"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						text="Diseases">
+						<SearchField placeholder="Diseases"
+					liveChange="onSearchDisease"
+					width="30%" />
+			
+		<List width="30%"
+		id="DiseaseList"
+		growing="true"
+		growingScrollToLoad="false"
+		growingThreshold="4"
+		busyIndicatorDelay="500"
+	    enableBusyIndicator="true"
+		noDataText="No Dieases list available"
+		items="{disease_data>/Disease}"
+		mode="MultiSelect"
+		includeItemInSelection="true"
+		select= "onSelectDisease">
+		<StandardListItem
+			title="{disease_data>DISEASE_NAME}"
+			description="{disease_data>DISEASE_INFO}"/>
+	</List>
+					</IconTabFilter>
+					<IconTabFilter
+						text="Medicines">
+						<SearchField placeholder="Medicines"
+					liveChange="onSearchMedicine"
+					width="30%" />
+		
+		
+	 <List width="30%"
+	 growing="true"
+	 growingScrollToLoad="false"
+	 growingThreshold="4"
+	 busyIndicatorDelay="500"
+	 enableBusyIndicator="true"
+		noDataText="No Medicine list available"
+		id="MedicineList"
+		items="{medicine_data>/Medicine}"
+		mode="MultiSelect"
+		includeItemInSelection="true"
+		select= "onSelectMedicine">
+				<StandardListItem
+				id="items"
+			    title="{medicine_data>NAME}"
+			    description="{medicine_data>BRAND}"/>
+			</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</headerContainer>
+	</ObjectHeader>
+	<Input value="{item>/USERID}" id="USERID" />
+	<Button text="Submit" press="onPress" width="100%" />
+	</Page>		
+</core:View>

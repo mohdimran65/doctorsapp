@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<configuration>
+ <services>
+  <service name="Customer.svc">
+   <path>\services\Customer\CustomerDataService.php</path>
+   <classname>CustomerDataService</classname>
+   <baseURL>/Customer.svc</baseURL>
+  </service>
+ </services>
+</configuration>

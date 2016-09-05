@@ -1,0 +1,93 @@
+<core:View xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:layout="sap.ui.layout"
+		   xmlns:m="sap.m"
+		   controllerName="hello.profile"
+		   xmlns:u="sap.ui.unified"
+xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<u:Shell
+			id="myShell"
+			icon="{/logo}">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="Configuration"
+					icon="sap-icon://menu2"
+					press="handlePressConfiguration" />
+				<u:ShellHeadItem
+					tooltip="Home" 
+					icon="sap-icon://home"
+					visible="false"
+					press="handlePressHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					icon="sap-icon://log"
+					tooltip="Logout"
+					press="handleLoginPress" />
+			</u:headEndItems>
+			<u:paneContent>
+			 <m:Panel>
+				<m:Link
+				text="Search Patient"
+				press="SearchPatient" />
+			</m:Panel>
+			<m:Panel>
+				<m:Link
+				text="Search Medicine"
+				press="SearchMedicine" />
+			</m:Panel>
+				<m:Panel>
+				<m:Link
+				text="Add Medicine"
+				press="AddMedicine" /></m:Panel>
+				<m:Panel>
+				<m:Link
+				text="Add Patient"
+				press="AddPatient" />
+			</m:Panel>
+			</u:paneContent>
+	
+	<ObjectPageLayout binding="{/0}" enableLazyLoading="true" useIconTabBar="true" showTitleInHeaderContent="true">
+	<headerTitle>
+			<ObjectPageHeader
+			                  objectImageURI="{IMAGE}"
+							  objectTitle="{SPECAILIST}"
+							  objectImageShape="Circle"
+							  objectSubtitle="{NAME}">
+			</ObjectPageHeader>
+		</headerTitle>
+		<headerContent>
+			<layout:VerticalLayout>
+				<m:Link text="{PHONE}"/>
+				<m:Link text="{EMAIL}"/>
+			</layout:VerticalLayout>
+ 
+			<layout:HorizontalLayout>
+				<m:Link src="images/facebook.png"/>
+				<m:Image src="images/linkedin.png"></m:Image>
+				<m:Image src="images/twitter.png"></m:Image>
+			</layout:HorizontalLayout>
+ 
+			<layout:VerticalLayout>
+				<m:Label text="You can add Medicines, Search a Patient in order to look a Patient and you can search a Medicines in Order to study that Medicine"/>
+				<m:VBox height="63px">
+					<m:Label text="Achieved goals as per Patient count "/>
+					<m:ProgressIndicator
+							percentValue="{ACHIEVEMENT}"
+							displayValue="{ACHIEVEMENT}"
+							showValue="true"
+							state="None"/>
+				</m:VBox>
+			</layout:VerticalLayout>
+ 
+			<layout:VerticalLayout>
+				<m:Label text="{STEEET}"/>
+				<m:Label text="{CITY}"/>
+				<m:Label text="{STATE}"/>
+			</layout:VerticalLayout>
+		</headerContent>
+		</ObjectPageLayout>
+		</u:Shell>
+	
+</core:View>

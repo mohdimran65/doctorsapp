@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+		<script>
+				sap.ui.localResources("hello");
+				var app = new sap.m.App("appId",{initialPage:"idlogin"});
+				var page = sap.ui.view({id:"idlogin", viewName:"hello.login", type:sap.ui.core.mvc.ViewType.XML});
+				var page1 =  sap.ui.view({id:"idregister", viewName:"hello.register", type:sap.ui.core.mvc.ViewType.XML});
+				var page2 =  sap.ui.view({id:"idprofile", viewName:"hello.profile", type:sap.ui.core.mvc.ViewType.XML});
+				var page3 =  sap.ui.view({id:"idpatient_search", viewName:"hello.patient_search", type:sap.ui.core.mvc.ViewType.XML});
+				var page4 =  sap.ui.view({id:"idpatient_add", viewName:"hello.patient_add", type:sap.ui.core.mvc.ViewType.XML});
+				var page5 =  sap.ui.view({id:"idmedicine_search", viewName:"hello.medicin_search", type:sap.ui.core.mvc.ViewType.XML});
+				var page6 =  sap.ui.view({id:"idmedicine_add", viewName:"hello.medicin_add", type:sap.ui.core.mvc.ViewType.XML});
+				var page7 =  sap.ui.view({id:"idlogout", viewName:"hello.logout", type:sap.ui.core.mvc.ViewType.XML});
+				var masterPage = sap.ui.view({id:"masterPage", viewName:"hello.masterPage", type:sap.ui.core.mvc.ViewType.XML});
+				var detailsPage = sap.ui.view({id:"detailsPage", viewName:"hello.detailsPage", type:sap.ui.core.mvc.ViewType.XML});
+				app.addPage(page).addPage(page1).addPage(page2).addPage(page3).addPage(page4).addPage(page5).
+				addPage(page6).addPage(masterPage).addPage(detailsPage).addPage(page7);
+				app.placeAt("content");
+				var userId;
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

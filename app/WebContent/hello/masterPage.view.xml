@@ -1,0 +1,24 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="hello.masterPage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Patients" showNavButton="true" navButtonPress="onNavigationMaster">
+		<content>
+	
+	<SearchField placeholder="Search"
+					liveChange="onSearchPatient"
+					width="100%" />
+			
+		<List width="100%"
+		id="Patientlist"
+		select="itemSelected"
+		items="{data>/Patient_Details}"
+		mode="SingleSelect"
+		includeItemInSelection="true">
+		<StandardListItem
+		    id="ListItemId"
+			title="{data>PATIENT_NAME}"
+			description="{data>USERID}"/>
+	</List>
+	
+		</content>
+	</Page>
+</core:View>

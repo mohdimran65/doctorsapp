@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <edmx:DataServices>
+  <Schema Namespace="Customer" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+   <EntityType name="address">
+    <Key>
+     <PropertyRef name="addressID"/>
+    </Key>
+    <Property name="addressID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <Property name="street" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="number" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="state" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="postalcode" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <Property name="cityID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <NavigationProperty name="city" Relationship="fk_city" FromRole="addresses" ToRole="city"/>
+    <NavigationProperty name="customer" Relationship="fk_address" FromRole="address" ToRole="customers"/>
+   </EntityType>
+   <EntityType name="city">
+    <Key>
+     <PropertyRef name="cityID"/>
+    </Key>
+    <Property name="cityID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <Property name="city" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="countryID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <NavigationProperty name="country" Relationship="fk_country" FromRole="cities" ToRole="country"/>
+    <NavigationProperty name="address" Relationship="fk_city" FromRole="city" ToRole="addresses"/>
+   </EntityType>
+   <EntityType name="country">
+    <Key>
+     <PropertyRef name="countryID"/>
+    </Key>
+    <Property name="countryID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <Property name="country" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <NavigationProperty name="city" Relationship="fk_country" FromRole="country" ToRole="cities"/>
+   </EntityType>
+   <EntityType name="customer">
+    <Key>
+     <PropertyRef name="customerID"/>
+    </Key>
+    <Property name="customerID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <Property name="firstName" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="lastName" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="email" Type="Edm.String" Nullable="false" MaxLength="45" Precision="10"/>
+    <Property name="addressID" Type="Edm.Int32" Nullable="false" Precision="10"/>
+    <NavigationProperty name="address" Relationship="fk_address" FromRole="customers" ToRole="address"/>
+   </EntityType>
+   <Association name="fk_city">
+    <End Role="city" Type="Customer.city" Multiplicity="1"/>
+    <End Role="addresses" Type="Customer.address" Multiplicity="*"/>
+    <ReferentialConstraint>
+     <Principal Role="city">
+      <PropertyRef name="cityID"/>
+     </Principal>
+     <Dependent Role="addresses">
+      <PropertyRef name="cityID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association name="fk_country">
+    <End Role="country" Type="Customer.country" Multiplicity="1"/>
+    <End Role="cities" Type="Customer.city" Multiplicity="*"/>
+    <ReferentialConstraint>
+     <Principal Role="country">
+      <PropertyRef name="countryID"/>
+     </Principal>
+     <Dependent Role="cities">
+      <PropertyRef name="countryID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association name="fk_address">
+    <End Role="address" Type="Customer.address" Multiplicity="1"/>
+    <End Role="customers" Type="Customer.customer" Multiplicity="*"/>
+    <ReferentialConstraint>
+     <Principal Role="address">
+      <PropertyRef name="addressID"/>
+     </Principal>
+     <Dependent Role="customers">
+      <PropertyRef name="addressID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <EntityContainer name="CustomerEntities">
+    <EntitySet name="addresses" EntityType="Customer.address"/>
+    <EntitySet name="cities" EntityType="Customer.city"/>
+    <EntitySet name="countries" EntityType="Customer.country"/>
+    <EntitySet name="customers" EntityType="Customer.customer"/>
+    <AssociationSet name="fk_city" Association="Customer.fk_city">
+     <End Role="city" EntitySet="cities"/>
+     <End Role="addresses" EntitySet="addresses"/>
+    </AssociationSet>
+    <AssociationSet name="fk_country" Association="Customer.fk_country">
+     <End Role="country" EntitySet="countries"/>
+     <End Role="cities" EntitySet="cities"/>
+    </AssociationSet>
+    <AssociationSet name="fk_address" Association="Customer.fk_address">
+     <End Role="address" EntitySet="addresses"/>
+     <End Role="customers" EntitySet="customers"/>
+    </AssociationSet>
+   </EntityContainer>
+   <EntityNameInformation>
+    <EntityName dbName="address" EntityTypeName="address" EntitySetName="addresses"/>
+    <EntityName dbName="city" EntityTypeName="city" EntitySetName="cities"/>
+    <EntityName dbName="country" EntityTypeName="country" EntitySetName="countries"/>
+    <EntityName dbName="customer" EntityTypeName="customer" EntitySetName="customers"/>
+   </EntityNameInformation>
+   <MappingDetails>
+    <MapEntity UserEntityName="address" DBEntityName="address">
+     <MapProperty UserEntityName="address" UserPropertyName="addressID" DBPropertyName="addressID"/>
+     <MapProperty UserEntityName="address" UserPropertyName="street" DBPropertyName="street"/>
+     <MapProperty UserEntityName="address" UserPropertyName="number" DBPropertyName="number"/>
+     <MapProperty UserEntityName="address" UserPropertyName="state" DBPropertyName="state"/>
+     <MapProperty UserEntityName="address" UserPropertyName="postalcode" DBPropertyName="postalcode"/>
+     <MapProperty UserEntityName="address" UserPropertyName="cityID" DBPropertyName="cityID"/>
+    </MapEntity>
+    <MapEntity UserEntityName="city" DBEntityName="city">
+     <MapProperty UserEntityName="city" UserPropertyName="cityID" DBPropertyName="cityID"/>
+     <MapProperty UserEntityName="city" UserPropertyName="city" DBPropertyName="city"/>
+     <MapProperty UserEntityName="city" UserPropertyName="countryID" DBPropertyName="countryID"/>
+    </MapEntity>
+    <MapEntity UserEntityName="country" DBEntityName="country">
+     <MapProperty UserEntityName="country" UserPropertyName="countryID" DBPropertyName="countryID"/>
+     <MapProperty UserEntityName="country" UserPropertyName="country" DBPropertyName="country"/>
+    </MapEntity>
+    <MapEntity UserEntityName="customer" DBEntityName="customer">
+     <MapProperty UserEntityName="customer" UserPropertyName="customerID" DBPropertyName="customerID"/>
+     <MapProperty UserEntityName="customer" UserPropertyName="firstName" DBPropertyName="firstName"/>
+     <MapProperty UserEntityName="customer" UserPropertyName="lastName" DBPropertyName="lastName"/>
+     <MapProperty UserEntityName="customer" UserPropertyName="email" DBPropertyName="email"/>
+     <MapProperty UserEntityName="customer" UserPropertyName="addressID" DBPropertyName="addressID"/>
+    </MapEntity>
+   </MappingDetails>
+  </Schema>
+ </edmx:DataServices>
+</edmx:Edmx>

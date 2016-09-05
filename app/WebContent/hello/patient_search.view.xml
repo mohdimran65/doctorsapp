@@ -1,0 +1,56 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="hello.patient_search" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+	<Page title="Search Patient" showNavButton="true" navButtonPress="onNavigation">
+		
+				<Panel>      
+				   <SearchField
+							id="searchField"
+							tooltip="Search a Medicin"
+							search="onSearchPatient"
+							width="80%"/></Panel>		
+	
+	<Table
+				id="PatientTable"
+				width="auto"
+				class="sapUiResponsiveMargin"
+				items="{/Patient}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="List of Patients"/>
+						
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						
+					</Column>
+					<Column id="unitNumberColumn" hAlign="End">
+						
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPress">
+						<cells>
+							<ObjectIdentifier
+								title="{PATIENT_NAME}"
+								text="{USERID}"/>
+								<Text
+								text="{ADDRESS}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+	</Page>
+	</App>
+</core:View>
