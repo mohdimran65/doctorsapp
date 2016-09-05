@@ -8,7 +8,7 @@ sap.ui.controller("hello.patient_add", {
 onInit: function() {
 
 	var oModel2 = new sap.ui.model.json.JSONModel();
-    oModel2.loadData("http://localhost/patient_api/doctor.php",true);
+    oModel2.loadData("patient_api/doctor.php",true);
     sap.ui.getCore().setModel(oModel2,'doctor_data');
 	
 },

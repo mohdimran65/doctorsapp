@@ -9,7 +9,7 @@ sap.ui.controller("hello.medicin_search", {
         
 		var view = this.getView();
 		var oModel = new sap.ui.model.json.JSONModel();
-	    oModel.loadData("http://localhost/patient_api/medicin_search.php",true);
+	    oModel.loadData("patient_api/medicin_search.php",true);
 	    view.setModel(oModel);
 		
 	},

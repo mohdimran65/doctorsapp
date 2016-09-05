@@ -48,7 +48,7 @@ sap.ui.controller("hello.medicin_add", {
     
 
         
-    $.post('http://localhost/patient_api/medicine_add.php',{medicine:medicine,power:power,brand:brand,speciality:speciality},
+    $.post('patient_api/medicine_add.php',{medicine:medicine,power:power,brand:brand,speciality:speciality},
     		function(data)
     		{
     	

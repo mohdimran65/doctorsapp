@@ -9,7 +9,7 @@ sap.ui.controller("hello.profile", {
 		
 		var view = this.getView();
 		var oModel = new sap.ui.model.json.JSONModel();
-	    oModel.loadData("http://localhost/patient_api/profile.php",true);
+	    oModel.loadData("patient_api/profile.php",true);
 	    view.setModel(oModel);
 	    
 	},

@@ -18,7 +18,7 @@ sap.ui.controller("hello.patient_search", {
 	onInit: function() {
    
 		var oModel = new sap.ui.model.json.JSONModel();
-	    oModel.loadData("http://localhost/patient_api/patient_search.php",false);
+	    oModel.loadData("patient_api/patient_search.php",false);
 	    sap.ui.getCore().setModel(oModel);
 
 },

@@ -17,11 +17,11 @@ sap.ui.controller("hello.detailsPage", {
 
 		
 		var oModel1 = new sap.ui.model.json.JSONModel();
-	    oModel1.loadData("http://localhost/patient_api/medicin_search.php",true);
+	    oModel1.loadData("patient_api/medicin_search.php",true);
 	    sap.ui.getCore().setModel(oModel1,'medicine_data');
 	    
 	    var oModel2 = new sap.ui.model.json.JSONModel();
-	    oModel2.loadData("http://localhost/patient_api/disease.php",true);
+	    oModel2.loadData("patient_api/disease.php",true);
 	    sap.ui.getCore().setModel(oModel2,'disease_data');
 	   
 },
@@ -101,7 +101,7 @@ onPress : function(){
 
 	var userId = this.getView().byId("USERID").getValue();
 	
-	 $.post('http://localhost/patient_api/medicine_add.php',{item:r,item1:r1,USERID:userId},
+	 $.post('patient_api/medicine_add.php',{item:r,item1:r1,USERID:userId},
 	    		function(data)
 	    		{
 	    	

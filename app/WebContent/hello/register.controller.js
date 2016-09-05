@@ -48,14 +48,10 @@ sap.ui.controller("hello.register", {
 	    var designation = this.getView().byId("input8").getItems();
 	    
 	   console.log(designation);
-	    
-	    
-	    //window.location = "http://localhost/patient_api/register.php?name=" + name + "&userID=" + userID
-	    //+ "&password=" + password + "&email=" + email + "&phone="+ phone + "&street=" + street + "&city=" + city + "&state=" + state
-	    //;	
+	   	
 
 	    
-	    $.post('http://localhost/patient_api/register.php',{name:name,userId:userId,password:password,email:email,phone:phone,
+	    $.post('patient_api/register.php',{name:name,userId:userId,password:password,email:email,phone:phone,
 	    	street:street,city:city,state:state},
 	    		function(data)
 	    		{

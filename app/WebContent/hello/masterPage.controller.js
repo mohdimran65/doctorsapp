@@ -13,7 +13,7 @@ sap.ui.controller("hello.masterPage", {
 * @memberOf splitapp.masterPage
 */
 onInit: function() {
-	var oModel = new sap.ui.model.json.JSONModel("http://localhost/patient_api/patient_detail.php");
+	var oModel = new sap.ui.model.json.JSONModel("patient_api/patient_detail.php");
 	 sap.ui.getCore().setModel(oModel,'data');
 },
 

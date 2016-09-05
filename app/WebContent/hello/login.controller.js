@@ -41,7 +41,7 @@ login : function()
 	userId = this.getView().byId("userId").getValue();    
     var password = this.getView().byId("password").getValue();
     
-    $.post('http://localhost/patient_api/Index.php',{postuserId:userId,postpassword:password},
+    $.post('patient_api/Index.php',{postuserId:userId,postpassword:password},
     		function(data)
     		{
     	

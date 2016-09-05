@@ -40,7 +40,7 @@ onInit: function() {
 
 		var view = this.getView();
 		var oModel = new sap.ui.model.json.JSONModel();
-	    oModel.loadData("http://localhost/patient_api/logout.php",true);
+	    oModel.loadData("patient_api/logout.php",true);
 	    view.setModel(oModel);
 	    
 		app = sap.ui.getCore().byId("appId");
